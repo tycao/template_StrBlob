@@ -58,6 +58,7 @@ template<typename T> void Blob<T>::pop_back(){
 }
 
 template<typename T> Blob<T>::Blob() : data(make_shared<std::vector<T>>()) {}
+template<typename T> Blob<T>::Blob(std::initializer_list<T> ini) : data(make_shared<std::vector<T>>(ini)) {}
 
 
 
@@ -77,5 +78,13 @@ int main()
     {
         cout << e.what() << endl;
     }
+    
+    cout << "+++++++++++++使用接受initializer_list的构造函数，operator[]成员函数，size()成员函数++++++++++++++++" << endl;
+    Blob<int> b2 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    for (size_t i = 0; i != b2.size(); ++i)
+        b2[i] = i * i;
+    for (size_t i = 0; i != b2.size(); ++i)
+        cout << b2[i] << " ";
+    cout << endl;
     return 0;
 }
