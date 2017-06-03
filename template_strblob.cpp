@@ -25,6 +25,7 @@ public:
 
     //元素访问
     T& back() const;
+    T& front() const;
     T& operator[](size_type i) const;
 private:
     std::shared_ptr<std::vector<T>> data;
@@ -39,6 +40,11 @@ template<typename T> void Blob<T>::check(size_type i, const std::string& msg) co
 template<typename T> T& Blob<T>::back() const {
     check(0, "back on the empty Blob");
     return data->back();
+}
+
+template<typename T> T& Blob<T>::front() const {
+    check(0, "front on an empty Blob");
+    return data->front();
 }
 
 template<typename T> T& Blob<T>::operator[](size_type i) const {
@@ -61,6 +67,7 @@ int main()
     string str = "the first element of the array";
     b.push_back(str);
     cout << b.back() << endl;
+    cout << b.front() << endl;
     b.pop_back();
     try
     {
