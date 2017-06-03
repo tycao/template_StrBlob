@@ -1,0 +1,2 @@
+# template_StrBlob
+用类模版重新实现了StrBlob类，从而可以实现对不同类型的操作
